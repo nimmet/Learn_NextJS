@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import data from "../../public/Data/data";
+import dummy from "../../public/Data/data";
 import { BiLocationPlus, BiRightArrowAlt, BiCalendar } from "react-icons/bi";
 
 const AllEvents = () => {
   const [yearVal, setYearVal] = useState(null);
   const [monthVal, setMonthVal] = useState(null);
+  const [data, setData] = useState(dummy)
+  const [filteredData, setFilteredData] = useState(data)
 
   const YearOption = [2020, 2021, 2022, 2023];
   const MonthOption = [
@@ -38,29 +40,18 @@ const AllEvents = () => {
   ];
 
   const findEvents = ()=>{
-    let val = data.filter(
+   let val =  data.filter(
             (da) =>
               da.date.split("-")[0] === yearVal && Number(da.date.split("-")[1]) === ar.findIndex((d)=>d === monthVal)+1
               )
-    let val1 = val.filter((da)=>
-   Number(da.date.split("-")[1]) === ar.findIndex((d)=>d === monthVal)+1 )
 
-              console.log(val);
+        setFilteredData(val)
+
+             
   }
 
-  findEvents()
 
-  const findMonth = (val)=>{
-    return Object.values(MonthOption).filter((k,v)=> v===val)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(yearVal);
-    console.log(monthVal);
-    console.log("2020-03-25".split("-"));
-    console.log(findMonth(monthVal));
-  };
+  
 
   const yearChangeHandler = (event) => {
     setYearVal(event.target.value);
@@ -78,7 +69,7 @@ const AllEvents = () => {
           <form
             action=""
             className=" flex justify-around items-center my-2"
-            onSubmit={handleSubmit}
+           
           >
             <label htmlFor="year" className=" font-[700]">
               Year
@@ -111,7 +102,7 @@ const AllEvents = () => {
 
             <button
               className="bg-emerald-600 rounded-md px-3 py-1 text-white"
-              onClick={handleSubmit}
+              onClick={findEvents}
               type="button"
             >
               Find Events
@@ -119,10 +110,10 @@ const AllEvents = () => {
           </form>
         </div>
         {
-            data.filter(
-            (da) =>
-              da.date.split("-")[0] === yearVal && Number(da.date.split("-")[1]) === ar.findIndex((d)=>d === monthVal)+1
-              ).map((ev) => {
+            filteredData.length===0 ? (<div>
+            <h1 className=" font-bold text-xl italic text-red-500">There is no event</h1>
+            </div>):
+            filteredData.map((ev) => {
             const {
               id,
               title,
