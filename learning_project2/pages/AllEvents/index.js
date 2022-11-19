@@ -7,6 +7,7 @@ const AllEvents = () => {
   const [monthVal, setMonthVal] = useState(null);
   const [data, setData] = useState(dummy)
   const [filteredData, setFilteredData] = useState(data)
+  const [filtered, setFiltered] = useState(false)
 
   const YearOption = [2020, 2021, 2022, 2023];
   const MonthOption = [
@@ -47,7 +48,15 @@ const AllEvents = () => {
 
         setFilteredData(val)
 
+      
+        setFiltered(true)
+
              
+  }
+
+  const showAllEvents = ()=> {
+    setFilteredData(data)
+    setFiltered(false)
   }
 
 
@@ -65,6 +74,17 @@ const AllEvents = () => {
   return (
     <div>
       <div className=" flex flex-col justify-center items-center my-10  ">
+
+      {filtered ? <div className=" flex flex-col justify-center items-center">
+             
+             <h1 className=" text-xl font-[700]">Events in {monthVal} {yearVal}</h1>
+             <button
+              className=" bg-emerald-600 rounded-md px-5 py-1 font-[600] mt-2 mb-8 text-white/80"
+              onClick={showAllEvents}
+              >
+                      Show all events
+                    </button>
+             </div> : 
         <div className="w-[500px] bg-slate-200 rounded-md mb-12 ">
           <form
             action=""
@@ -103,15 +123,21 @@ const AllEvents = () => {
             <button
               className="bg-emerald-600 rounded-md px-3 py-1 text-white"
               onClick={findEvents}
-              type="button"
+              type="button" 
             >
               Find Events
             </button>
           </form>
         </div>
+}
+
+
+
         {
             filteredData.length===0 ? (<div>
-            <h1 className=" font-bold text-xl italic text-red-500">There is no event</h1>
+            <h1 className=" font-bold text-xl italic text-red-500">There is no event
+            
+            </h1>
             </div>):
             filteredData.map((ev) => {
             const {
@@ -128,6 +154,7 @@ const AllEvents = () => {
                 key={id}
                 className=" flex gap-x-4 my-2 bg-slate-200 w-[480px] rounded-md"
               >
+          
                 <div>
                   <img
                     src={image}
