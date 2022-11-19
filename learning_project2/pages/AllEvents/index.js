@@ -1,8 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useContext, useState } from "react";
 import dummy from "../../public/Data/data";
 import { BiLocationPlus, BiRightArrowAlt, BiCalendar } from "react-icons/bi";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Navbar from "../Navbar";
+import EventDetail from "../EventDetail";
+import EventsContext from "../contexts";
 
 
 const AllEvents = () => {
@@ -11,6 +14,7 @@ const AllEvents = () => {
   const [data, setData] = useState(dummy)
   const [filteredData, setFilteredData] = useState(data)
   const [filtered, setFiltered] = useState(false)
+  const [explore,setExplore] = useState(false)
   const router = useRouter()
 
 
@@ -76,12 +80,15 @@ const AllEvents = () => {
     
   };
 
-  const exploreEventHandler = ()=>{
+  const exploreEventHandler = (detail)=>{
     router.push("/EventDetail")
+    
   }
+
 
   return (
     <div>
+    <Navbar/>
       <div className=" flex flex-col justify-center items-center my-10  ">
 
       {filtered ? <div className=" flex flex-col justify-center items-center">
@@ -186,7 +193,7 @@ const AllEvents = () => {
 
                   <div className=" flex justify-end text-white">
                     <button className=" bg-emerald-600 rounded-md px-3 py-1 font-[600] my-2 ml-40" 
-                    onClick={exploreEventHandler}>
+                    onClick={()=> exploreEventHandler(ev)}>
                       Explore Event <BiRightArrowAlt className=" inline" />
                     </button>
                   </div>
@@ -195,6 +202,7 @@ const AllEvents = () => {
             );
           })}
       </div>
+     
     </div>
   );
 };

@@ -1,9 +1,10 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { BiLocationPlus, BiRightArrowAlt, BiCalendar } from "react-icons/bi";
+import EventsContext from '../contexts';
 import Navbar from '../Navbar';
 
-const EventDetail = () => {
+const EventDetail = (details) => {
     const test = {
         id: 'e1',
         title: 'Programming for everyone',
@@ -15,13 +16,13 @@ const EventDetail = () => {
         isFeatured: false,
       }
 
-      const {id,title,description,location,date,image,isFeatured} = test
+      const {id,title,description,location,date,image,isFeatured} = details
   return (
     
     <div className='flex flex-col justify-center'>
 <Navbar />
     <div className=' bg-teal-700/90 h-[200px] justify-center flex'>
-        <h1 className=' lg:text-5xl text-4xl sm:text-3xl text-white mt-10 font-bold'>{test.title}</h1>
+        <h1 className=' lg:text-5xl text-4xl sm:text-3xl text-white mt-10 font-bold'>{title}</h1>
     </div>
 
 <div className=' flex flex-row justify-center'>

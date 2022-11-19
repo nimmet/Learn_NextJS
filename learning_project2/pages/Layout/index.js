@@ -6,7 +6,8 @@ const Layout = () => {
 
 
   return (
-    <div>
+      <div>
+      
         <div className=" flex flex-col justify-center items-center my-10  ">
             {
                 data.filter(events=>events.isFeatured ===true).map((ev)=>{
