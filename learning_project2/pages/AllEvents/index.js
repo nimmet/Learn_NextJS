@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import dummy from "../../public/Data/data";
 import { BiLocationPlus, BiRightArrowAlt, BiCalendar } from "react-icons/bi";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 
 const AllEvents = () => {
   const [yearVal, setYearVal] = useState(null);
@@ -8,6 +11,8 @@ const AllEvents = () => {
   const [data, setData] = useState(dummy)
   const [filteredData, setFilteredData] = useState(data)
   const [filtered, setFiltered] = useState(false)
+  const router = useRouter()
+
 
   const YearOption = [2020, 2021, 2022, 2023];
   const MonthOption = [
@@ -70,6 +75,10 @@ const AllEvents = () => {
     setMonthVal(event.target.value);
     
   };
+
+  const exploreEventHandler = ()=>{
+    router.push("/EventDetail")
+  }
 
   return (
     <div>
@@ -176,7 +185,8 @@ const AllEvents = () => {
                   </div>
 
                   <div className=" flex justify-end text-white">
-                    <button className=" bg-emerald-600 rounded-md px-3 py-1 font-[600] my-2 ml-40">
+                    <button className=" bg-emerald-600 rounded-md px-3 py-1 font-[600] my-2 ml-40" 
+                    onClick={exploreEventHandler}>
                       Explore Event <BiRightArrowAlt className=" inline" />
                     </button>
                   </div>
