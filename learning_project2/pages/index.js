@@ -4,8 +4,9 @@ import AllEvents from './AllEvents'
 import EventDetail from './EventDetail'
 import Layout from './Layout'
 import Navbar from './Navbar'
+import { getFeaturedEvents } from '../helpers/api-utils'
 
-export default function Home() {
+export default function Home(props) {
   return (
    <div>
    <Navbar />
@@ -15,4 +16,14 @@ export default function Home() {
    
    </div>
   )
+}
+
+export async function getStaticProps(){
+  const featuredEvents = await getFeaturedEvents()
+
+  return {
+    props: {
+      events: featuredEvents
+    }
+  }
 }
