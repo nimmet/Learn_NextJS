@@ -1,6 +1,7 @@
 
 import React, { useContext, useState } from 'react'
 import { BiLocationPlus, BiRightArrowAlt, BiCalendar } from "react-icons/bi";
+import CommentsPage from '../comments';
 import EventsContext from '../contexts';
 import Navbar from '../Navbar';
 
@@ -74,7 +75,7 @@ const EventDetail = (details) => {
                 <button className=' text-center  text-green-500 border-none outline outline-teal-400/60 rounded-sm px-3' onClick={showCommentHandler} >{showComment? 'Hide Comments' : 'Show Comments'}</button>
                 {
                   showComment ? 
-                <div className=' bg-emerald-600/50 rounded-md h-[220px]'>
+                <div className=' bg-emerald-600/50 rounded-md h-[220px] mb-5'>
                   <form className='px-5 py-2'>
                   <div className=' flex flex-row gap-3'>
 
@@ -97,7 +98,9 @@ const EventDetail = (details) => {
                   </div>
                   </form>
                 </div> : ''
+
 }
+              
 
 
               </div>
