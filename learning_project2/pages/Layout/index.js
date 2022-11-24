@@ -9,6 +9,18 @@ const Layout = () => {
       <div>
       
         <div className=" flex flex-col justify-center items-center my-10  ">
+
+        <div className=" flex flex-col gap-4 mb-5">
+            <h1 className=" text-xl font-bold text-center">Sign up to stay updated!</h1>
+            <div className=" ">
+                <form>
+                    <input type="email" name="email" placeholder="Your email " 
+                        className=" bg-slate-200 rounded-md rounded-r-none px-2 focus:outline-none"
+                    />
+                    <button className="bg-emerald-600 rounded-md rounded-l-none px-2 text-white">Register</button>
+                </form>
+            </div>
+        </div>
             {
                 data.filter(events=>events.isFeatured ===true).map((ev)=>{
                     const {id,title,description,location,isFeatured,image,date} = ev
