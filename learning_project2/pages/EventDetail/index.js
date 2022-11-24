@@ -75,7 +75,7 @@ const EventDetail = (details) => {
                 <button className=' text-center  text-green-500 border-none outline outline-teal-400/60 rounded-sm px-3' onClick={showCommentHandler} >{showComment? 'Hide Comments' : 'Show Comments'}</button>
                 {
                   showComment ? 
-                <div className=' bg-emerald-600/50 rounded-md h-[220px] mb-5'>
+                <div className=' bg-emerald-600/50 rounded-md h-[250px] mb-5'>
                   <form className='px-5 py-2'>
                   <div className=' flex flex-row gap-3'>
 
@@ -96,6 +96,13 @@ const EventDetail = (details) => {
                     <label htmlFor="comment" className='text-white'>Your comment</label>
                     <textarea className=' focus:outline-none  rounded-sm' name="comment" cols="30" rows="5"></textarea>
                   </div>
+
+                    <div className='flex justify-center items-center'>
+
+                  <button className=' bg-white m-4 px-2 py-0.5 rounded-md' onClick={(e)=>{
+                    e.preventDefault()
+                  }}>Submit</button>
+                    </div>
                   </form>
                 </div> : ''
 
