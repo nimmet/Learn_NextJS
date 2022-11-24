@@ -4,6 +4,9 @@ import data from "../../public/Data/data"
 
 const Layout = () => {
 
+    const handleSubmit = (e)=> {
+        e.preventDefault()
+    }
 
   return (
       <div>
@@ -13,11 +16,11 @@ const Layout = () => {
         <div className=" flex flex-col gap-4 mb-5">
             <h1 className=" text-xl font-bold text-center">Sign up to stay updated!</h1>
             <div className=" ">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <input type="email" name="email" placeholder="Your email " 
                         className=" bg-slate-200 rounded-md rounded-r-none px-2 focus:outline-none"
                     />
-                    <button className="bg-emerald-600 rounded-md rounded-l-none px-2 text-white">Register</button>
+                    <button className="bg-emerald-600 rounded-md rounded-l-none px-2 text-white" onClick={()=>handleSubmit}>Register</button>
                 </form>
             </div>
         </div>

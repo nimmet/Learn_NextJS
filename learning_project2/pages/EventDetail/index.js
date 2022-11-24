@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { BiLocationPlus, BiRightArrowAlt, BiCalendar } from "react-icons/bi";
 import EventsContext from '../contexts';
 import Navbar from '../Navbar';
@@ -16,7 +16,15 @@ const EventDetail = (details) => {
         isFeatured: false,
       }
 
-      const {id,title,description,location,date,image,isFeatured} = details
+      const {id,title,description,location,date,image,isFeatured} = test
+
+      const [showComment,setShowComment] = useState(false)
+
+      const showCommentHandler = ()=> {
+        setShowComment(!showComment)
+      }
+
+
   return (
     
     <div className='flex flex-col justify-center'>
@@ -60,6 +68,38 @@ const EventDetail = (details) => {
               </div>
               <div className=' w-[580px] text-center mx-auto font-[600]'>
                 <p>{description}</p>
+              </div>
+
+              <div className=' w-[350px] flex flex-col gap-5 justify-center items-center mx-auto mt-5'>
+                <button className=' text-center  text-green-500 border-none outline outline-teal-400/60 rounded-sm px-3' onClick={showCommentHandler} >{showComment? 'Hide Comments' : 'Show Comments'}</button>
+                {
+                  showComment ? 
+                <div className=' bg-emerald-600/50 rounded-md h-[220px]'>
+                  <form className='px-5 py-2'>
+                  <div className=' flex flex-row gap-3'>
+
+                  <div className=' flex flex-col'>
+                    <label htmlFor="email"  className='text-white'>Your email</label>
+                    <input className=' focus:outline-none rounded-sm' type="email" name="email" />
+                  </div>
+
+                  <div className=' flex flex-col'>
+                    <label htmlFor="name" className='text-white'>Your name</label>
+                    <input className=' focus:outline-none rounded-sm' type="text" />
+                  </div>
+
+                  </div>
+
+
+                  <div className=' flex flex-col'>
+                    <label htmlFor="comment" className='text-white'>Your comment</label>
+                    <textarea className=' focus:outline-none  rounded-sm' name="comment" cols="30" rows="5"></textarea>
+                  </div>
+                  </form>
+                </div> : ''
+}
+
+
               </div>
     </div>
   )
