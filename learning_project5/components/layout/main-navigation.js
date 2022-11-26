@@ -3,7 +3,7 @@ import Logo from "./logo";
 
 function MainNavigation() {
   return (
-    <header className=" absolute text-white flex justify-around items-center gap-5 top-5 xss:left-5 xss:right-5 left-16 right-16 lg:right-24 lg:left-24">
+    <header className=" text-white flex justify-around items-center gap-5 xss:left-5 xss:right-5 right-24 left-24 h-16 bg-zinc-700 px-10 ">
       <Link href="/" className=" flex-1">
         <Logo />
       </Link>
