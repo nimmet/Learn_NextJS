@@ -13,21 +13,22 @@ function PostItem(props) {
   const linkPath = `/posts/${slug}`;
 
   return (
-    <li>
+    <li className=" rounded-sm shadow-xl shadow-slate-200/70">
       <Link href={linkPath}>
-        <div>
+        <div className=" ">
           <Image
             src={imagePath}
             alt={title}
             width={300}
             height={200}
             layout="responsive"
+            className=" rounded-t-sm"
           />
         </div>
-        <div>
-          <h3>{title}</h3>
-          <time>{formattedDate}</time>
-          <p>{excerpt}</p>
+        <div className=" text-white bg-zinc-800 flex flex-col justify-center items-center gap-4 p-5">
+          <h3 className=" text-xl capitalize font-bold">{title}</h3>
+          <time className=" italic">{formattedDate}</time>
+          <p className="text-center">{excerpt}</p>
         </div>
       </Link>
     </li>
