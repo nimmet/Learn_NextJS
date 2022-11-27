@@ -6,14 +6,15 @@ import { get } from 'http'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
-function getPostData(fileName){
-    const filePath = path.join(postsDirectory,fileName)
+export function getPostData(postIdentifier) {
+
+    const postSlug = postIdentifier.replace(/\.md$/, '') // remove the .md extension
+    const filePath = path.join(postsDirectory,`${postSlug}.md`)
 
     const fileContent = fs.readFileSync(filePath,'utf-8')
 
     const {data,content} = matter(fileContent)
 
-    const postSlug = fileName.replace(/\.md$/, '') // remove the .md extension
 
     const postData = {
         slug: postSlug,
@@ -24,8 +25,12 @@ function getPostData(fileName){
     return postData
     
 }
+
+export function getPostsFiles(){
+    return fs.readdirSync(postsDirectory)
+}
 export function getAllPosts() {
-const postFiles = fs.readdirSync(postsDirectory)
+const postFiles = getPostsFiles()
 
     const allPosts = postFiles.map(postFile=> {
         return getPostData(postFile)
