@@ -39,10 +39,10 @@ function PostContent(props) {
       return <p className=" text-xl font-normal">{txt.children}</p>;
     },
 
-    code(code) {
-      const { language, value } = code;
-      return (<SyntaxHighlighter style={atomDark} language={language} children={value} />);
-    },
+    // code(code) {
+    //   const { language, value } = code;
+    //   return (<SyntaxHighlighter style={atomDark} language={language} children={value} />);
+    // },
   };
 
   return (
