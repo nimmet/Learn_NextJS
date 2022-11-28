@@ -14,14 +14,14 @@ function Notification(props) {
     statusClasses = " bg-red-500 text-black";
   }
 
-  const cssClasses = `${" w-[550px] rounded-sm flex justify-around items-center py-2 fixed bottom-2"} ${statusClasses}`;
+  const cssClasses = `${" w-[550px] rounded-sm flex justify-around items-center py-2 fixed bottom-2 "} ${statusClasses}`;
 
-  return(
+  return ReactDOM.createPortal( (
     <div className={cssClasses}>
       <h2 className='  font-bold text-2xl'>{title}</h2>
       <p className=' text-xl'>{message}</p>
     </div>
-  );
+  ), document.getElementById('notification'));
 }
 
 export default Notification;

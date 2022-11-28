@@ -11,6 +11,10 @@ import styles from "../styles/Home.module.css";
 export default function HomePage(props) {
   return (
     <Fragment>
+    <Head>
+      <title>Uyghur's Blog</title>
+      <meta name="description" content="I post about programming and web development" />
+    </Head>
       <Hero />
       <FeaturedPosts posts={props.posts} />
     </Fragment>
